@@ -1720,7 +1720,7 @@ const featureCards = [
       "Answer a few prompts → receive a tailored cover letter instantly.",
     href: "/cover-letter",
     previewImage:
-      "https://airesumeimages.s3.us-east-1.amazonaws.com/localhost_3001_cover-letter.png",
+      "https://airesumeimages.s3.us-east-1.amazonaws.com/Resume+and+Cover+Letter+audit.png",
   },
   {
     icon: <ClipboardList size={20} className="text-peach-400" />,
@@ -1776,7 +1776,7 @@ const featureCards = [
     hoverInfo: "TTS questions, STT answers, STAR feedback, EQ scores & badges.",
     href: "/interview-simulator",
     previewImage:
-      "https://airesumeimages.s3.us-east-1.amazonaws.com/localhost_3001_interview-simulator.png",
+      "https://airesumeimages.s3.us-east-1.amazonaws.com/Interview+Simulator.png",
     isNew: true,
   },
 ];
