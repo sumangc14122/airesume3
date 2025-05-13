@@ -1192,20 +1192,41 @@ export default function ResumeAuditPage() {
     const overallMatch = result.match(/Overall Score:\s*(\d+)/);
     const percentileMatch = result.match(/Percentile:\s*Top\s*(\d+)%/);
 
-    // Extract sections for rendering
+    // // Extract sections for rendering
+    // const strengthsMatch = result.match(
+    //   /Strengths:\n([\s\S]*?)(?=\n\nWeaknesses:)/,
+    // );
+    // const weaknessesMatch = result.match(
+    //   /Weaknesses:\n([\s\S]*?)(?=\n\nSuggestions:)/,
+    // );
+    // const suggestionsMatch = result.match(
+    //   /Suggestions:\n([\s\S]*?)(?=\n\n(?:Keyword Gap Analysis:|$))/,
+    // );
+    // const keywordGapMatch = result.match(
+    //   /Keyword Gap Analysis:\n([\s\S]*?)(?=\n\nATS Tips:|$)/,
+    // );
+    // const atsTipsMatch = result.match(/ATS Tips:\n([\s\S]*?)$/);
+
+    // 🔍 Extract sections for rendering
     const strengthsMatch = result.match(
-      /Strengths:\n([\s\S]*?)(?=\n\nWeaknesses:)/,
+      /Strengths:\s*\n([\s\S]*?)(?=\n[A-Z][^\n]*:|$)/
     );
+    
     const weaknessesMatch = result.match(
-      /Weaknesses:\n([\s\S]*?)(?=\n\nSuggestions:)/,
+      /Weaknesses:\s*\n([\s\S]*?)(?=\n[A-Z][^\n]*:|$)/
     );
+    
     const suggestionsMatch = result.match(
-      /Suggestions:\n([\s\S]*?)(?=\n\n(?:Keyword Gap Analysis:|$))/,
+      /Suggestions(?: for Improvement)?:\s*\n([\s\S]*?)(?=\n[A-Z][^\n]*:|$)/
     );
+    
     const keywordGapMatch = result.match(
-      /Keyword Gap Analysis:\n([\s\S]*?)(?=\n\nATS Tips:|$)/,
+      /Keyword Gap(?: Analysis)?:\s*\n([\s\S]*?)(?=\n[A-Z][^\n]*:|$)/
     );
-    const atsTipsMatch = result.match(/ATS Tips:\n([\s\S]*?)$/);
+    
+    const atsTipsMatch = result.match(
+      /ATS Tips:\s*\n([\s\S]*?)(?=\n[A-Z][^\n]*:|$)/
+    );
 
     // Extract low-scoring areas for improvement suggestions
     const lowScoringAreas = Object.entries(scores)
